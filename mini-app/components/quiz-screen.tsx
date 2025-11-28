@@ -23,6 +23,125 @@ const questions = [
     options: ['Berlin', 'Paris', 'Rome'],
     answer: 1,
   },
+  {
+    question: 'Which planet is known as the Red Planet?',
+    options: ['Earth', 'Mars', 'Jupiter'],
+    answer: 1,
+  },
+  {
+    question: 'What is the largest mammal?',
+    options: ['Elephant', 'Blue Whale', 'Giraffe'],
+    answer: 1,
+  },
+  {
+    question: 'What is the boiling point of water at sea level?',
+    options: ['90°C', '100°C', '110°C'],
+    answer: 1,
+  },
+  {
+    question: 'Who wrote "Romeo and Juliet"?',
+    options: ['Shakespeare', 'Dickens', 'Hemingway'],
+    answer: 0,
+  },
+  {
+    question: 'What is the smallest prime number?',
+    options: ['1', '2', '3'],
+    answer: 1,
+  },
+  {
+    question: 'Which gas do plants absorb from the atmosphere?',
+    options: ['Oxygen', 'Nitrogen', 'Carbon Dioxide'],
+    answer: 2,
+  },
+  {
+    question: 'What is the currency of Japan?',
+    options: ['Yen', 'Dollar', 'Euro'],
+    answer: 0,
+  },
+];
+
+export default function QuizScreen({ name, onSubmit }: Props) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState<number[]>(Array(questions.length).fill(-1));
+
+  const handleSelect = (optIndex: number) => {
+    const newAnswers = [...answers];
+    newAnswers[currentIndex] = optIndex;
+    setAnswers(newAnswers);
+  };
+
+  const handleNext = () => {
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handleBack = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const handleSubmit = () => {
+    const score = answers.reduce((acc, ans, idx) => {
+      return acc + (ans === questions[idx].answer ? 1 : 0);
+    }, 0);
+    onSubmit(score);
+  };
+
+  const currentQuestion = questions[currentIndex];
+
+  return (
+    <div className="flex flex-col gap-4">
+      <h2 className="text-xl">Quiz for {name}</h2>
+      <div className="border p-2 rounded">
+        <p>{currentQuestion.question}</p>
+        {currentQuestion.options.map((opt, oIdx) => (
+          <label key={oIdx} className="block">
+            <input
+              type="radio"
+              name={`q${currentIndex}`}
+              checked={answers[currentIndex] === oIdx}
+              onChange={() => handleSelect(oIdx)}
+            />
+            {opt}
+          </label>
+        ))}
+      </div>
+      <div className="flex gap-2">
+        <Button onClick={handleBack} disabled={currentIndex === 0}>
+          Back
+        </Button>
+        {currentIndex < questions.length - 1 ? (
+          <Button onClick={handleNext} disabled={answers[currentIndex] === -1}>
+            Next
+          </Button>
+        ) : (
+          <Button onClick={handleSubmit} disabled={answers[currentIndex] === -1}>
+            Submit
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const questions = [
+  {
+    question: 'What is 2 + 2?',
+    options: ['3', '4', '5'],
+    answer: 1,
+  },
+  {
+    question: 'What color is the sky on a clear day?',
+    options: ['Blue', 'Green', 'Red'],
+    answer: 0,
+  },
+  {
+    question: 'What is the capital of France?',
+    options: ['Berlin', 'Paris', 'Rome'],
+    answer: 1,
+  },
 ];
 
 export default function QuizScreen({ name, onSubmit }: Props) {
