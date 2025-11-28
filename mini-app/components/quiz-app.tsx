@@ -19,7 +19,12 @@ export default function QuizApp() {
     return <NameScreen onSubmit={handleNameSubmit} />;
   }
   if (score === null) {
-    return <QuizScreen name={name} onSubmit={handleQuizSubmit} />;
+    return (
+      <>
+        <div className="text-xl mb-4">Welcome, {name}!</div>
+        <QuizScreen name={name} onSubmit={handleQuizSubmit} />
+      </>
+    );
   }
   return <ResultScreen name={name} score={score} passed={passed} />;
 }
