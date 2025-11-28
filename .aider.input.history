@@ -20,3 +20,9 @@
 
 # 2025-11-28 13:52:26.186494
 +Show a short welcome message using the user’s name after they submit it.
+
+# 2025-11-28 14:18:19.854508
++Add support for 5–10 easy multiple-choice questions, but still show only one question at a time with Next/Back buttons. At the end, calculate the total score from all questions. Keep the questions simple general-knowledge items.
+
+# 2025-11-28 14:18:19.854860
++Add support for 5–10 easy multiple-choice questions, but still show only one question at a time with Next/Back buttons. At the end, calculate the total score from all questions. Keep the questions simple general-knowledge items.
