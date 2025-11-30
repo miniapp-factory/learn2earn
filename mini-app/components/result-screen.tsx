@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { saveResult } from './local-storage';
+import BadgeDialog from './badge-dialog';
 
 interface Props {
   name: string;
@@ -24,6 +25,7 @@ export default function ResultScreen({ name, score, passed }: Props) {
       </div>
       <p>Verification Code: {verificationCode}</p>
       <Button onClick={() => window.location.reload()}>Restart</Button>
+      <BadgeDialog />
     </div>
   );
 }
