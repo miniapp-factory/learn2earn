@@ -1,5 +1,13 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+  function shuffle<T>(array: T[]): T[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
 import { Button } from '@/components/ui/button';
 
 interface Props {
@@ -61,8 +69,9 @@ const questions = [
 ];
 
 export default function QuizScreen({ name, onSubmit }: Props) {
+  const [shuffledQuestions, setShuffledQuestions] = useState(() => shuffle(questions));
+  const [answers, setAnswers] = useState<number[]>(Array(shuffledQuestions.length).fill(-1));
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState<number[]>(Array(questions.length).fill(-1));
 
   const handleSelect = (optIndex: number) => {
     const newAnswers = [...answers];
@@ -71,7 +80,7 @@ export default function QuizScreen({ name, onSubmit }: Props) {
   };
 
   const handleNext = () => {
-    if (currentIndex < questions.length - 1) {
+    if (currentIndex < shuffledQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -84,12 +93,12 @@ export default function QuizScreen({ name, onSubmit }: Props) {
 
   const handleSubmit = () => {
     const score = answers.reduce((acc, ans, idx) => {
-      return acc + (ans === questions[idx].answer ? 1 : 0);
+      return acc + (ans === shuffledQuestions[idx].answer ? 1 : 0);
     }, 0);
     onSubmit(score);
   };
 
-  const currentQuestion = questions[currentIndex];
+  const currentQuestion = shuffledQuestions[currentIndex];
 
   return (
     <div className="flex flex-col gap-4">
@@ -112,7 +121,7 @@ export default function QuizScreen({ name, onSubmit }: Props) {
         <Button onClick={handleBack} disabled={currentIndex === 0}>
           Back
         </Button>
-        {currentIndex < questions.length - 1 ? (
+        {currentIndex < shuffledQuestions.length - 1 ? (
           <Button onClick={handleNext} disabled={answers[currentIndex] === -1}>
             Next
           </Button>
