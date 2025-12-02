@@ -46,3 +46,9 @@
 
 # 2025-11-30 14:23:02.085764
 +calculate the total score from all questions and show all the correct and incorrect answer
+
+# 2025-12-02 00:32:27.904858
++“Add a fake blockchain simulation to the app. After generating the verification code, show a small ‘Fake Blockchain Record’ box that displays: (1) username, (2) badge text, (3) verification code, and (4) a fake block number. Create a simple function that increments the block number each time a badge is saved. Display a message like ‘Stored in Fake Chain: Block #X’. Do not connect to any real blockchain. Everything should run locally using simple variables and basic UI elements only
+
+# 2025-12-02 00:32:27.905195
++“Add a fake blockchain simulation to the app. After generating the verification code, show a small ‘Fake Blockchain Record’ box that displays: (1) username, (2) badge text, (3) verification code, and (4) a fake block number. Create a simple function that increments the block number each time a badge is saved. Display a message like ‘Stored in Fake Chain: Block #X’. Do not connect to any real blockchain. Everything should run locally using simple variables and basic UI elements only
