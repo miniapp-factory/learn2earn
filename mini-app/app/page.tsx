@@ -6,5 +6,10 @@ export { generateMetadata };
 
 export default function Home() {
   // NEVER write anything here, only use this page to import components
-  return <QuizApp />;
+  return (
+    <div className="flex flex-col items-center gap-8">
+      <img src="/logo.png" alt="Logo" className="size-32" />
+      <QuizApp />
+    </div>
+  );
 }
