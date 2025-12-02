@@ -26,4 +26,5 @@ export function saveResult(result: Omit<Result, 'blockNumber'>): number {
     localStorage.setItem('quizResult', JSON.stringify({ ...result, blockNumber: block }));
     return block;
   }
+  return currentBlock;
 }
