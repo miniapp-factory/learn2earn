@@ -20,7 +20,7 @@ export function getCurrentBlockNumber(): number {
   return currentBlock;
 }
 
-export function saveResult(result: Result) {
+export function saveResult(result: Omit<Result, 'blockNumber'>): number {
   if (typeof window !== 'undefined') {
     const block = incrementBlockNumber();
     localStorage.setItem('quizResult', JSON.stringify({ ...result, blockNumber: block }));
