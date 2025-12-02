@@ -8,6 +8,7 @@ interface Result {
   score: number;
   badge: string;
   code: string;
+  blockNumber: number;
 }
 
 export default function BadgeDialog() {
@@ -37,6 +38,7 @@ export default function BadgeDialog() {
               <p>{result.badge}</p>
             </div>
             <p>Verification Code: {result.code}</p>
+            <p>Block #: {result.blockNumber}</p>
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
