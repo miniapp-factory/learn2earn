@@ -235,19 +235,27 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
 
   const handleNext = () => {
     if (currentIndex < shuffledQuestions.length - 1) {
+      const correct = shuffledQuestions[currentIndex].answer;
+      const userAns = answers[currentIndex];
+      const isCorrect = userAns === correct;
+      setFeedback(isCorrect ? 'Correct!' : `Incorrect. Correct answer: ${shuffledQuestions[currentIndex].options[correct]}`);
       setCurrentIndex(currentIndex + 1);
       setTimeLeft(getTimeForLevel(level));
-      setFeedback(null);
     }
   };
 
   const handleBack = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
+      setFeedback(null);
     }
   };
 
   const handleSubmit = () => {
+    const correct = shuffledQuestions[currentIndex].answer;
+    const userAns = answers[currentIndex];
+    const isCorrect = userAns === correct;
+    setFeedback(isCorrect ? 'Correct!' : `Incorrect. Correct answer: ${shuffledQuestions[currentIndex].options[correct]}`);
     const score = answers.reduce((acc, ans, idx) => {
       return acc + (ans === shuffledQuestions[idx].answer ? 1 : 0);
     }, 0);
@@ -297,8 +305,10 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
       <div className="border p-2 rounded">
         <p>{currentQuestion.question}</p>
         <p>Time left: {timeLeft}s</p>
+        const correct = shuffledQuestions[currentIndex].answer;
+        const isCorrect = answers[currentIndex] === correct;
         {currentQuestion.options.map((opt, oIdx) => (
-          <label key={oIdx} className="block">
+          <label key={oIdx} className={`block ${feedback && !isCorrect && oIdx === correct ? 'text-green-600 font-semibold' : ''}`}>
             <input
               type="radio"
               name={`q${currentIndex}`}
