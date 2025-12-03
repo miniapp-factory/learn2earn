@@ -184,3 +184,15 @@
 +• If correct → show ‘Correct!’
 +• If incorrect → show ‘Incorrect’ and highlight the correct answer.
 +Keep the feedback simple and shown only after the user locks in their answer.
+
+# 2025-12-03 08:53:31.581703
++For every question answered, display a short message:
++• If correct → show ‘Correct!’
++• If incorrect → show ‘Incorrect’ and highlight the correct answer.
++Keep the feedback simple and shown only after the user locks in their answer.
+
+# 2025-12-03 08:53:31.582027
++For every question answered, display a short message:
++• If correct → show ‘Correct!’
++• If incorrect → show ‘Incorrect’ and highlight the correct answer.
++Keep the feedback simple and shown only after the user locks in their answer.
