@@ -124,3 +124,29 @@
 +
 +When the timer reaches zero, automatically lock the user’s answer as ‘No Answer’ and move to the next question. Display the remaining time clearly on the screen using only basic text elements. The timer should restart for every question. Keep all logic simple and avoid external libraries. After the final question, calculate the score as usual, show the badge if the user passes, and generate the verification code
 +
+
+# 2025-12-03 05:48:57.823404
++dd clear feedback for each question and for the final result.
++For every question answered, display a short message:
++• If correct → show ‘Correct!’
++• If incorrect → show ‘Incorrect’ and highlight the correct answer.
++Keep the feedback simple and shown only after the user locks in their answer.
++
++After the last question, calculate the total score and show a final result message:
++• If the score is 70% or higher → show ‘You Passed!’ and display the badge.
++• If the score is below 70% → show ‘You Did Not Pass’ with encouragement to try again.
++
++Use only basic UI elements like text boxes and buttons
+
+# 2025-12-03 05:48:57.823810
++dd clear feedback for each question and for the final result.
++For every question answered, display a short message:
++• If correct → show ‘Correct!’
++• If incorrect → show ‘Incorrect’ and highlight the correct answer.
++Keep the feedback simple and shown only after the user locks in their answer.
++
++After the last question, calculate the total score and show a final result message:
++• If the score is 70% or higher → show ‘You Passed!’ and display the badge.
++• If the score is below 70% → show ‘You Did Not Pass’ with encouragement to try again.
++
++Use only basic UI elements like text boxes and buttons
