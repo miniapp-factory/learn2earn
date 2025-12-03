@@ -209,6 +209,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
   const [shuffledQuestions, setShuffledQuestions] = useState(() => shuffle(filtered));
   const [answers, setAnswers] = useState<number[]>(Array(shuffledQuestions.length).fill(-1));
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showSummary, setShowSummary] = useState(false);
 
   const handleSelect = (optIndex: number) => {
     const newAnswers = [...answers];
@@ -233,6 +234,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
       return acc + (ans === shuffledQuestions[idx].answer ? 1 : 0);
     }, 0);
     onSubmit(score);
+    setShowSummary(true);
   };
 
   const currentQuestion = shuffledQuestions[currentIndex];
