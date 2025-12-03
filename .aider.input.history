@@ -80,3 +80,9 @@
 
 # 2025-12-03 03:37:00.785621
 +Based on the selected level, use the AI to generate simple multiple-choice questions (10 questions per level).
+
+# 2025-12-03 04:08:41.803721
++AI should create clear general-knowledge questions that fit the selected level. Show one question at a time with Next and Back buttons. Also the app should show the correct and incorrect answers when the result is out
+
+# 2025-12-03 04:08:41.804099
++AI should create clear general-knowledge questions that fit the selected level. Show one question at a time with Next and Back buttons. Also the app should show the correct and incorrect answers when the result is out
