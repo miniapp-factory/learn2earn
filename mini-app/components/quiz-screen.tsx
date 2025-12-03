@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 
 interface Props {
   name: string;
+  level: 'Easy' | 'Medium' | 'Hard';
   onSubmit: (score: number) => void;
 }
 
@@ -20,56 +21,67 @@ const questions = [
     question: 'What is 2 + 2?',
     options: ['3', '4', '5'],
     answer: 1,
+    level: 'Easy',
   },
   {
     question: 'What color is the sky on a clear day?',
     options: ['Blue', 'Green', 'Red'],
     answer: 0,
+    level: 'Easy',
   },
   {
     question: 'What is the capital of France?',
     options: ['Berlin', 'Paris', 'Rome'],
     answer: 1,
+    level: 'Easy',
   },
   {
     question: 'Which planet is known as the Red Planet?',
     options: ['Earth', 'Mars', 'Jupiter'],
     answer: 1,
+    level: 'Medium',
   },
   {
     question: 'What is the largest mammal?',
     options: ['Elephant', 'Blue Whale', 'Giraffe'],
     answer: 1,
+    level: 'Medium',
   },
   {
     question: 'What is the boiling point of water at sea level?',
     options: ['90°C', '100°C', '110°C'],
     answer: 1,
+    level: 'Medium',
   },
   {
     question: 'Who wrote "Romeo and Juliet"?',
     options: ['Shakespeare', 'Dickens', 'Hemingway'],
     answer: 0,
+    level: 'Hard',
   },
   {
     question: 'What is the smallest prime number?',
     options: ['1', '2', '3'],
     answer: 1,
+    level: 'Hard',
   },
   {
     question: 'Which gas do plants absorb from the atmosphere?',
     options: ['Oxygen', 'Nitrogen', 'Carbon Dioxide'],
     answer: 2,
+    level: 'Hard',
   },
   {
     question: 'What is the currency of Japan?',
     options: ['Yen', 'Dollar', 'Euro'],
     answer: 0,
+    level: 'Hard',
   },
 ];
 
-export default function QuizScreen({ name, onSubmit }: Props) {
-  const [shuffledQuestions, setShuffledQuestions] = useState(() => shuffle(questions));
+export default function QuizScreen({ name, level, onSubmit }: Props) {
+  const filtered = questions.filter(q => q.level === level);
+  const [shuffledQuestions, setShuffledQuestions] = useState(() => shuffle(filtered));
   const [answers, setAnswers] = useState<number[]>(Array(shuffledQuestions.length).fill(-1));
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -102,7 +114,7 @@ export default function QuizScreen({ name, onSubmit }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-xl">Quiz for {name}</h2>
+      <h2 className="text-xl">Quiz for {name} ({level})</h2>
       <div className="border p-2 rounded">
         <p>{currentQuestion.question}</p>
         {currentQuestion.options.map((opt, oIdx) => (
