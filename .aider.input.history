@@ -172,3 +172,15 @@
 +After the last question, calculate the total score and show a final result message:
 +• If the score is 70% or higher → show ‘You Passed!’ and display the badge.
 +• If the score is below 70% → show ‘You Did Not Pass’ with encouragement to try again.
+
+# 2025-12-03 08:17:16.692397
++For every question answered, display a short message:
++• If correct → show ‘Correct!’
++• If incorrect → show ‘Incorrect’ and highlight the correct answer.
++Keep the feedback simple and shown only after the user locks in their answer.
+
+# 2025-12-03 08:17:16.692766
++For every question answered, display a short message:
++• If correct → show ‘Correct!’
++• If incorrect → show ‘Incorrect’ and highlight the correct answer.
++Keep the feedback simple and shown only after the user locks in their answer.
