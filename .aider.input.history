@@ -106,3 +106,21 @@
 
 # 2025-12-03 05:10:05.596198
 +apply changes
+
+# 2025-12-03 05:22:45.224364
++Add a countdown timer for each question. The timer length depends on the selected difficulty level:
++• Easy = 20 seconds per question
++• Medium = 15 seconds per question
++• Hard = 10 seconds per question
++
++When the timer reaches zero, automatically lock the user’s answer as ‘No Answer’ and move to the next question. Display the remaining time clearly on the screen using only basic text elements. The timer should restart for every question. Keep all logic simple and avoid external libraries. After the final question, calculate the score as usual, show the badge if the user passes, and generate the verification code
++
+
+# 2025-12-03 05:22:45.225292
++Add a countdown timer for each question. The timer length depends on the selected difficulty level:
++• Easy = 20 seconds per question
++• Medium = 15 seconds per question
++• Hard = 10 seconds per question
++
++When the timer reaches zero, automatically lock the user’s answer as ‘No Answer’ and move to the next question. Display the remaining time clearly on the screen using only basic text elements. The timer should restart for every question. Keep all logic simple and avoid external libraries. After the final question, calculate the score as usual, show the badge if the user passes, and generate the verification code
++
