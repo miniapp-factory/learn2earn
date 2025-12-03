@@ -24,6 +24,7 @@ export default function ResultScreen({ name, score, passed }: Props) {
     <div className="flex flex-col gap-4 items-center">
       <div className="border p-4 rounded">
         <p>{badgeText}</p>
+        <p>{passed ? 'You Passed!' : 'You Did Not Pass. Try again!'}</p>
       </div>
       <p>Verification Code: {verificationCode}</p>
       {blockNumber !== null && (

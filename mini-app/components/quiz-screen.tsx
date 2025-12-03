@@ -20,6 +20,7 @@ import { useState, useEffect } from 'react';
     }
   }
 import { Button } from '@/components/ui/button';
+import ResultScreen from '@/components/result-screen';
 
 interface Props {
   name: string;
@@ -221,6 +222,8 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
   const [answers, setAnswers] = useState<number[]>(Array(shuffledQuestions.length).fill(-1));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState<number>(getTimeForLevel(level));
+  const [finalScore, setFinalScore] = useState(0);
+  const [passed, setPassed] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
 
   const handleSelect = (optIndex: number) => {
@@ -233,6 +236,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
     if (currentIndex < shuffledQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setTimeLeft(getTimeForLevel(level));
+      setFeedback(null);
     }
   };
 
@@ -246,6 +250,8 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
     const score = answers.reduce((acc, ans, idx) => {
       return acc + (ans === shuffledQuestions[idx].answer ? 1 : 0);
     }, 0);
+    setFinalScore(score);
+    setPassed(score >= Math.ceil(shuffledQuestions.length * 0.7));
     onSubmit(score);
     setShowSummary(true);
   };
@@ -262,6 +268,10 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
             }
             return newAnswers;
           });
+          const correct = shuffledQuestions[currentIndex].answer;
+          const userAns = answers[currentIndex];
+          const isCorrect = userAns === correct;
+          setFeedback(isCorrect ? 'Correct!' : `Incorrect. Correct answer: ${shuffledQuestions[currentIndex].options[correct]}`);
           if (currentIndex < shuffledQuestions.length - 1) {
             setCurrentIndex((idx) => idx + 1);
             setTimeLeft(getTimeForLevel(level));
@@ -279,30 +289,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
   const currentQuestion = shuffledQuestions[currentIndex];
 
   return showSummary ? (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-xl">Quiz Summary for {name} ({level})</h2>
-      <div className="space-y-4">
-        {shuffledQuestions.map((q, idx) => {
-          const userAns = answers[idx];
-          const correct = q.answer;
-          const isCorrect = userAns === correct;
-          return (
-            <div key={idx} className="border p-2 rounded">
-              <p className="font-semibold">{q.question}</p>
-              <p className={isCorrect ? "text-green-600" : "text-red-600"}>
-                Your answer: {q.options[userAns] ?? "No answer"}
-              </p>
-              {!isCorrect && (
-                <p className="text-green-600">
-                  Correct answer: {q.options[correct]}
-                </p>
-              )}
-            </div>
-          );
-        })}
-      </div>
-      <Button onClick={() => setShowSummary(false)}>Restart</Button>
-    </div>
+    <ResultScreen name={name} score={finalScore} passed={passed} />
   ) : (
     <div className="flex flex-col gap-4">
       <h2 className="text-xl">Quiz for {name} ({level})</h2>
@@ -320,6 +307,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
             {opt}
           </label>
         ))}
+        {feedback && <p className="mt-2">{feedback}</p>}
       </div>
       <div className="flex gap-2">
         <Button onClick={handleBack} disabled={currentIndex === 0}>
