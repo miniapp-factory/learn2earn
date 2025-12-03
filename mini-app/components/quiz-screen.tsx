@@ -224,6 +224,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
   const [timeLeft, setTimeLeft] = useState<number>(getTimeForLevel(level));
   const [finalScore, setFinalScore] = useState(0);
   const [passed, setPassed] = useState(false);
+  const [feedback, setFeedback] = useState<string | null>(null);
   const [showSummary, setShowSummary] = useState(false);
 
   const handleSelect = (optIndex: number) => {
