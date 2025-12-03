@@ -74,3 +74,9 @@
 # 2025-12-03 03:26:49.983489
 +Add a levels feature to the quiz app. Create three levels: Easy, Medium, and Hard. At the start of the quiz, let the user choose a level
 +
+
+# 2025-12-03 03:37:00.784463
++Based on the selected level, use the AI to generate simple multiple-choice questions (10 questions per level).
+
+# 2025-12-03 03:37:00.785621
++Based on the selected level, use the AI to generate simple multiple-choice questions (10 questions per level).
