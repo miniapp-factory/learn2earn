@@ -17,6 +17,7 @@ interface Props {
 }
 
 const questions = [
+  // Easy level questions
   {
     question: 'What is 2 + 2?',
     options: ['3', '4', '5'],
@@ -39,41 +40,165 @@ const questions = [
     question: 'Which planet is known as the Red Planet?',
     options: ['Earth', 'Mars', 'Jupiter'],
     answer: 1,
-    level: 'Medium',
+    level: 'Easy',
   },
   {
     question: 'What is the largest mammal?',
     options: ['Elephant', 'Blue Whale', 'Giraffe'],
     answer: 1,
-    level: 'Medium',
+    level: 'Easy',
   },
   {
     question: 'What is the boiling point of water at sea level?',
     options: ['90°C', '100°C', '110°C'],
     answer: 1,
-    level: 'Medium',
+    level: 'Easy',
   },
   {
     question: 'Who wrote "Romeo and Juliet"?',
     options: ['Shakespeare', 'Dickens', 'Hemingway'],
     answer: 0,
-    level: 'Hard',
+    level: 'Easy',
   },
   {
     question: 'What is the smallest prime number?',
     options: ['1', '2', '3'],
     answer: 1,
-    level: 'Hard',
+    level: 'Easy',
   },
   {
     question: 'Which gas do plants absorb from the atmosphere?',
     options: ['Oxygen', 'Nitrogen', 'Carbon Dioxide'],
     answer: 2,
-    level: 'Hard',
+    level: 'Easy',
   },
   {
     question: 'What is the currency of Japan?',
     options: ['Yen', 'Dollar', 'Euro'],
+    answer: 0,
+    level: 'Easy',
+  },
+
+  // Medium level questions
+  {
+    question: 'What is the chemical symbol for Gold?',
+    options: ['Au', 'Ag', 'Gd'],
+    answer: 0,
+    level: 'Medium',
+  },
+  {
+    question: 'Which element has the atomic number 6?',
+    options: ['Carbon', 'Oxygen', 'Nitrogen'],
+    answer: 0,
+    level: 'Medium',
+  },
+  {
+    question: 'What is the square root of 144?',
+    options: ['10', '12', '14'],
+    answer: 1,
+    level: 'Medium',
+  },
+  {
+    question: 'Who painted the Mona Lisa?',
+    options: ['Vincent van Gogh', 'Leonardo da Vinci', 'Pablo Picasso'],
+    answer: 1,
+    level: 'Medium',
+  },
+  {
+    question: 'What is the capital of Australia?',
+    options: ['Sydney', 'Melbourne', 'Canberra'],
+    answer: 2,
+    level: 'Medium',
+  },
+  {
+    question: 'Which country hosted the 2016 Summer Olympics?',
+    options: ['Brazil', 'China', 'United Kingdom'],
+    answer: 0,
+    level: 'Medium',
+  },
+  {
+    question: 'What is the largest planet in our solar system?',
+    options: ['Saturn', 'Jupiter', 'Neptune'],
+    answer: 1,
+    level: 'Medium',
+  },
+  {
+    question: 'What is the main ingredient in guacamole?',
+    options: ['Tomato', 'Avocado', 'Onion'],
+    answer: 1,
+    level: 'Medium',
+  },
+  {
+    question: 'Which language is primarily spoken in Brazil?',
+    options: ['Spanish', 'Portuguese', 'French'],
+    answer: 1,
+    level: 'Medium',
+  },
+  {
+    question: 'What is the speed of light in vacuum (approx.)?',
+    options: ['300,000 km/s', '150,000 km/s', '450,000 km/s'],
+    answer: 0,
+    level: 'Medium',
+  },
+
+  // Hard level questions
+  {
+    question: 'What is the derivative of sin(x)?',
+    options: ['cos(x)', '-cos(x)', 'sin(x)'],
+    answer: 0,
+    level: 'Hard',
+  },
+  {
+    question: 'Who developed the theory of general relativity?',
+    options: ['Isaac Newton', 'Albert Einstein', 'Niels Bohr'],
+    answer: 1,
+    level: 'Hard',
+  },
+  {
+    question: 'What is the capital of Kazakhstan?',
+    options: ['Almaty', 'Astana', 'Nur-Sultan'],
+    answer: 2,
+    level: 'Hard',
+  },
+  {
+    question: 'Which element has the highest melting point?',
+    options: ['Tungsten', 'Iron', 'Gold'],
+    answer: 0,
+    level: 'Hard',
+  },
+  {
+    question: 'What is the integral of 1/x dx?',
+    options: ['ln|x| + C', '1/x + C', 'x + C'],
+    answer: 0,
+    level: 'Hard',
+  },
+  {
+    question: 'Which country has the largest population?',
+    options: ['India', 'China', 'United States'],
+    answer: 1,
+    level: 'Hard',
+  },
+  {
+    question: 'What is the chemical formula for table salt?',
+    options: ['NaCl', 'KCl', 'CaCl2'],
+    answer: 0,
+    level: 'Hard',
+  },
+  {
+    question: 'Who wrote "The Republic"?',
+    options: ['Aristotle', 'Plato', 'Socrates'],
+    answer: 1,
+    level: 'Hard',
+  },
+  {
+    question: 'What is the largest ocean on Earth?',
+    options: ['Atlantic', 'Indian', 'Pacific'],
+    answer: 2,
+    level: 'Hard',
+  },
+  {
+    question: 'What is the value of Planck’s constant (approx.)?',
+    options: ['6.626×10⁻³⁴ J·s', '3.00×10⁸ m/s', '1.60×10⁻¹⁹ C'],
     answer: 0,
     level: 'Hard',
   },
