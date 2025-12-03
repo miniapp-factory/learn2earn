@@ -150,3 +150,25 @@
 +• If the score is below 70% → show ‘You Did Not Pass’ with encouragement to try again.
 +
 +Use only basic UI elements like text boxes and buttons
+
+# 2025-12-03 07:50:58.108851
++Add clear feedback for each question and for the final result.
++For every question answered, display a short message:
++• If correct → show ‘Correct!’
++• If incorrect → show ‘Incorrect’ and highlight the correct answer.
++Keep the feedback simple and shown only after the user locks in their answer.
++
++After the last question, calculate the total score and show a final result message:
++• If the score is 70% or higher → show ‘You Passed!’ and display the badge.
++• If the score is below 70% → show ‘You Did Not Pass’ with encouragement to try again.
+
+# 2025-12-03 07:50:58.110635
++Add clear feedback for each question and for the final result.
++For every question answered, display a short message:
++• If correct → show ‘Correct!’
++• If incorrect → show ‘Incorrect’ and highlight the correct answer.
++Keep the feedback simple and shown only after the user locks in their answer.
++
++After the last question, calculate the total score and show a final result message:
++• If the score is 70% or higher → show ‘You Passed!’ and display the badge.
++• If the score is below 70% → show ‘You Did Not Pass’ with encouragement to try again.
