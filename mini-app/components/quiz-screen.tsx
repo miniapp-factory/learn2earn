@@ -239,7 +239,32 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
 
   const currentQuestion = shuffledQuestions[currentIndex];
 
-  return (
+  return showSummary ? (
+    <div className="flex flex-col gap-4">
+      <h2 className="text-xl">Quiz Summary for {name} ({level})</h2>
+      <div className="space-y-4">
+        {shuffledQuestions.map((q, idx) => {
+          const userAns = answers[idx];
+          const correct = q.answer;
+          const isCorrect = userAns === correct;
+          return (
+            <div key={idx} className="border p-2 rounded">
+              <p className="font-semibold">{q.question}</p>
+              <p className={isCorrect ? "text-green-600" : "text-red-600"}>
+                Your answer: {q.options[userAns] ?? "No answer"}
+              </p>
+              {!isCorrect && (
+                <p className="text-green-600">
+                  Correct answer: {q.options[correct]}
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <Button onClick={() => setShowSummary(false)}>Restart</Button>
+    </div>
+  ) : (
     <div className="flex flex-col gap-4">
       <h2 className="text-xl">Quiz for {name} ({level})</h2>
       <div className="border p-2 rounded">
