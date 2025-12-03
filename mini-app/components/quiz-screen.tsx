@@ -8,6 +8,17 @@ import { useState, useEffect } from 'react';
     }
     return shuffled;
   }
+
+  function getTimeForLevel(level: 'Easy' | 'Medium' | 'Hard'): number {
+    switch (level) {
+      case 'Easy':
+        return 20;
+      case 'Medium':
+        return 15;
+      case 'Hard':
+        return 10;
+    }
+  }
 import { Button } from '@/components/ui/button';
 
 interface Props {
@@ -209,6 +220,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
   const [shuffledQuestions, setShuffledQuestions] = useState(() => shuffle(filtered));
   const [answers, setAnswers] = useState<number[]>(Array(shuffledQuestions.length).fill(-1));
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [timeLeft, setTimeLeft] = useState<number>(getTimeForLevel(level));
   const [showSummary, setShowSummary] = useState(false);
 
   const handleSelect = (optIndex: number) => {
@@ -220,6 +232,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
   const handleNext = () => {
     if (currentIndex < shuffledQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
+      setTimeLeft(getTimeForLevel(level));
     }
   };
 
@@ -236,6 +249,32 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
     onSubmit(score);
     setShowSummary(true);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          // Lock answer if not already answered
+          setAnswers((prevAnswers) => {
+            const newAnswers = [...prevAnswers];
+            if (newAnswers[currentIndex] === -1) {
+              newAnswers[currentIndex] = -1;
+            }
+            return newAnswers;
+          });
+          if (currentIndex < shuffledQuestions.length - 1) {
+            setCurrentIndex((idx) => idx + 1);
+            setTimeLeft(getTimeForLevel(level));
+          } else {
+            handleSubmit();
+          }
+          return getTimeForLevel(level);
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [currentIndex, level, answers, handleSubmit]);
 
   const currentQuestion = shuffledQuestions[currentIndex];
 
@@ -269,6 +308,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
       <h2 className="text-xl">Quiz for {name} ({level})</h2>
       <div className="border p-2 rounded">
         <p>{currentQuestion.question}</p>
+        <p>Time left: {timeLeft}s</p>
         {currentQuestion.options.map((opt, oIdx) => (
           <label key={oIdx} className="block">
             <input
@@ -290,7 +330,7 @@ export default function QuizScreen({ name, level, onSubmit }: Props) {
             Next
           </Button>
         ) : (
-          <Button onClick={handleSubmit} disabled={answers[currentIndex] === -1}>
+          <Button onClick={handleSubmit} disabled={false}>
             Submit
           </Button>
         )}
